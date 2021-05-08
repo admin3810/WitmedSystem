@@ -5,17 +5,17 @@ import java.util.Date;
 
 public class BaseEntity implements Serializable {
 	private static final long serialVersionUID = 5842045591154899469L;
-	private String status;
+	private Integer status;
 	private String createUser;
 	private Date createTime;
 	private String updateUser;
 	private Date updateTime;
 
-	public String getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
