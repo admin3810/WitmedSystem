@@ -7,6 +7,7 @@ public class ABOBlood extends BaseEntity {
 	private String text;
 	private String code;
 
+
 	public String getId() {
 		return id;
 	}

@@ -7,7 +7,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,8 +15,7 @@ import java.io.InputStream;
 import java.util.Iterator;
 
 public class ExcelFile {
-	@Autowired
-	private static IdGenerator idGenerator;
+	 static IdGenerator idGenerator=new IdGenerator();
 	public static void main(String[] args) {
 		String filePath= "C:/Users/Administrator/Desktop/one.xlsx";
 		InputStream fis=null;
@@ -39,13 +37,13 @@ public class ExcelFile {
 
 			while (rows.hasNext()) {
 				row = rows.next();
-				String  number = row.getCell(0).toString().substring(0,row.getCell(0).toString().length()-2);
+				String  number = row.getCell(1).toString().substring(0,row.getCell(1).toString().length()-2);
 
 				if (number.length()==1){
 					number="0"+number;
 				}
 				// 获取单元格
-				System.out.println("insert into sys_visit_sign(id,sys_visit_sign.`\ntext`,code,status) values("+"\""+idGenerator.createId()+"\""+","+"\""+row.getCell(1)+"\""+","+"\""+number+"\""+",1);");
+				System.out.println("insert into sys_technical_position_grade(id,text,code,status) values("+"\""+idGenerator.createId()+"\""+","+"\""+row.getCell(0)+"\""+","+"\""+number+"\""+",1);");
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
